@@ -17,7 +17,6 @@ class Origin
     private ?string $name = null;
 
     #[ORM\Column]
-    private ?int $file = null;
 
     public function getId(): ?int
     {
@@ -43,15 +42,4 @@ class Origin
         return $this;
     }
 
-    public function getFile(): ?int
-    {
-        return $this->file;
-    }
-
-    public function setFile(int $file): static
-    {
-        $this->file = $file;
-
-        return $this;
-    }
 }

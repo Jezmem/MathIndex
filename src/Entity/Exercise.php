@@ -161,12 +161,12 @@ class Exercise
         return $this;
     }
 
-    public function getDuratoin(): ?float
+    public function getDuration(): ?float
     {
         return $this->duratoin;
     }
 
-    public function setDuratoin(float $duratoin): static
+    public function setDuration(float $duratoin): static
     {
         $this->duratoin = $duratoin;
 
@@ -245,12 +245,12 @@ class Exercise
         return $this;
     }
 
-    public function getExercisieFileId(): ?int
+    public function getExerciseFileId(): ?int
     {
         return $this->exercisie_file_id;
     }
 
-    public function setExercisieFileId(int $exercisie_file_id): static
+    public function setExerciseFileId(int $exercisie_file_id): static
     {
         $this->exercisie_file_id = $exercisie_file_id;
 

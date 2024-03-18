@@ -14,19 +14,10 @@ class Thematic
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $email = null;
+    private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $last_name = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $first_name = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $role = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $password = null;
+    #[ORM\Column]
+    private ?int $course_id = null;
 
     public function getId(): ?int
     {
@@ -40,62 +31,26 @@ class Thematic
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getName(): ?string
     {
-        return $this->email;
+        return $this->name;
     }
 
-    public function setEmail(string $email): static
+    public function setName(string $name): static
     {
-        $this->email = $email;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getLastName(): ?string
+    public function getCourseId(): ?int
     {
-        return $this->last_name;
+        return $this->course_id;
     }
 
-    public function setLastName(string $last_name): static
+    public function setCourseId(int $course_id): static
     {
-        $this->last_name = $last_name;
-
-        return $this;
-    }
-
-    public function getFirstName(): ?string
-    {
-        return $this->first_name;
-    }
-
-    public function setFirstName(string $first_name): static
-    {
-        $this->first_name = $first_name;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): static
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): static
-    {
-        $this->password = $password;
+        $this->course_id = $course_id;
 
         return $this;
     }

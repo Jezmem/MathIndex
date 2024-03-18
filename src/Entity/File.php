@@ -17,7 +17,10 @@ class File
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $orinal_name = null;
+    private ?string $original_name = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $extension = null;
 
     #[ORM\Column]
     private ?int $size = null;
@@ -46,14 +49,26 @@ class File
         return $this;
     }
 
-    public function getOrinalName(): ?string
+    public function getOriginalName(): ?string
     {
-        return $this->orinal_name;
+        return $this->original_name;
     }
 
-    public function setOrinalName(string $orinal_name): static
+    public function setOriginalName(string $original_name): static
     {
-        $this->orinal_name = $orinal_name;
+        $this->original_name = $original_name;
+
+        return $this;
+    }
+
+        public function getExtension(): ?string
+    {
+        return $this->extension;
+    }
+
+    public function setExtension(string $extension): static
+    {
+        $this->extension = $extension;
 
         return $this;
     }
