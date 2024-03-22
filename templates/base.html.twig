@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Acceuil
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:imag0e/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet"/>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+			<link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
+		{% endblock %}
 
-        {% block javascripts %}
-            {{ importmap() }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		{% block javascripts %}
+			{{ importmap() }}
+		{% endblock %}
+	</head>
+	<body>
+		{% include "sidebar.html.twig" %}
+		<main>
+			{% block body %}
+				<div></div>
+			{% endblock %}
+			<footer>
+				{% include "footer.html.twig" %}
+			</footer>
+		</main>
+	</body>
 </html>
+
+<style>
+	html {
+		height: 100%;
+		background-color: #EFF2F4;
+	}
+	main {
+		margin-left: 16rem;
+
+	}
+	footer {
+		bottom: 0;
+	}
+</style>
