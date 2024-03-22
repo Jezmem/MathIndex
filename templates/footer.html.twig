@@ -1,0 +1,39 @@
+{% block footer %}
+	<div class="footer">
+		<div class="footer-container">
+			<a href="#" class="footer-element footer-links">Mention légal</a>
+			<img src="image/point.svg" class="footer-element" style="width:7px">
+			<a href="#" class="footer-element footer-links">Contact</a>
+			<img src="image/point.svg" class="footer-element" style="width:7px">
+			<a href="https://www.lycee-stvincent.fr/" target="blank" class="footer-element footer-links">Lycée Saint-Vincent</a>
+		</div>
+	</div>
+
+{% endblock %}
+<style>
+	.footer {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: #EFF2F4;
+		color: black;
+		text-align: center;
+		margin-left: 16rem;
+		color: #757575;
+	}
+	.footer-container {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-wrap: wrap;
+		padding: 10px;
+	}
+	.footer-element {
+		margin: 0 1%
+	}
+	.footer-links:hover {
+		color: #1B3168;
+		cursor: pointer;
+	}
+</style>
