@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}connexion
+{% endblock %}
+
+{% block body %}
+	<form method="post"></form>
+
+
+	<div class="connexion">
+		<h1 class="connexion-title">Connexion</h1>
+		<div class="connexion-container">
+			<p>Cet espace est réservé aux enseignants du lycée Saint-Vincent - Senlis. Si vous n’avez pas encore de compte, veuillez effectuer votre demande directement en envoyant un email à
+				<a class="connexion-links" href="https://www.lycee-stvincent.fr/" target="blank">contact@lyceestvincent.net</a>.</p>
+			<form class="connexion-form" method="post">
+
+				{% if error %}
+					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
+
+				{% if app.user %}
+					<div class="mb-3">
+						You are logged in as
+						{{ app.user.userIdentifier }},
+						<a href="{{ path('app_logout') }}">Logout</a>
+					</div>
+				{% endif %}
+				<h2 class="connexion-label">E-mail :</h2>
+				<div class="input-group mb-3" style="margin-bottom: 1%;">
+					<input type="text" class="form-control connexion-input" placeholder="Saisissez votre adresse mail" style="border-radius: 5px" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus>
+				</div>
+				<h2 class="connexion-label">Mot de passe :</h2>
+				<div class="input-group mb-3">
+					<input type="password" class="form-control connexion-input" placeholder="Saisissez votre mot de passe" style="border-radius: 5px" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+				</div>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<div class="connexion-button">
+					<button type="submit" class="btn" style="background-color:#F6F6F6">Connexion</button>
+					<a>Mot de passe oublié ?</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	<style>
+		.connexion {
+			margin: 3%;
+			background-color: #EFF2F4;
+			font-size: 110%;
+		}
+		.connexion-container {
+			background-color: #fff;
+			border-radius: 5px;
+			padding: 2% 2% 15%;
+			margin: 1% 0;
+			color: #000000;
+		}
+		.connexion-title {
+			font-size: 200%;
+			font-weight: 500;
+			color: #1B3168;
+
+		}
+		.connexion-links {
+			color: #1B3168;
+		}
+		.connexion-form {
+			width: 45%;
+			margin-top: 3%;
+		}
+		.connexion-label {
+			font-size: 110%;
+			font-weight: 400;
+			color: #666666;
+			margin: 1% 0
+		}
+		.connexion-button {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding-top: 2%;
+		}
+	</style>
+
+{% endblock %}

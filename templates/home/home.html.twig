@@ -1,41 +1,48 @@
-{% block homepage %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
 
 	<div class="home">
 		<h1 class="home-title">Accueil</h1>
 		<div class="home-container">
-			<p>Nous sommes ravis de vous accueillir sur <strong>{{ 'Math Index'|raw }}</strong>, la plateforme mathématique exclusive du lycée Saint-Vincent Senlis. Développée avec passion pour enrichir l'expérience éducative de nos étudiants, cette ressource en ligne offre un accès simplifié à une vaste bibliothèque d'exercices mathématiques de qualité.</p>
+			<p>Nous sommes ravis de vous accueillir sur
+				<strong>{{ 'Math Index'|raw }}</strong>, la plateforme mathématique exclusive du lycée Saint-Vincent Senlis. Développée avec passion pour enrichir l'expérience éducative de nos étudiants, cette ressource en ligne offre un accès simplifié à une vaste bibliothèque d'exercices mathématiques de qualité.</p>
 			<h2 style="padding: 2% 0; font-size: 120%; font-weight: 400">Explorez les Avantages Spécifiques à Notre Lycée :</h2>
 			<ol class="home-list">
 				<li class="home-list-element">Exercices Personnalisés : Découvrez une collection soigneusement sélectionnée d'exercices qui complètent notre programme éducatif, adaptés aux niveaux et aux besoins spécifiques de nos élèves.</li>
-				<li class="home-list-element">Soutien Pédagogique : <strong>{{ 'Math Index'|raw }}</strong> sert de complément idéal à nos cours, offrant aux enseignants et aux étudiants un outil puissant pour renforcer la compréhension des concepts mathématiques enseignés en classe.</li>
+				<li class="home-list-element">Soutien Pédagogique :
+					<strong>{{ 'Math Index'|raw }}</strong>
+					sert de complément idéal à nos cours, offrant aux enseignants et aux étudiants un outil puissant pour renforcer la compréhension des concepts mathématiques enseignés en classe.</li>
 				<li class="home-list-element">Collaboration Communautaire : En tant que membre de notre lycée, participez à la communauté en partageant vos propres exercices, collaborez avec d'autres enseignants et favorisez un environnement d'apprentissage collaboratif.</li>
 			</ol>
 		</div>
 	</div>
-{% endblock %}
-<style>
-	.home {
-		margin: 3%;
-		background-color: #EFF2F4;
-		font-size: 110%;
-	}
-	.home-container {
-		background-color: #fff;
-		border-radius: 5px;
-		padding: 1% 2% 15% 1%;
-		margin: 1% 0;
-	}
-	.home-title {
-		font-size: 200%;
-		font-weight: 500;
-		color: #1B3168;
 
-	}
-	.home-list {
-		list-style: true !important;
-		padding: 0 2%;
-	}
-	.home-list-element {
-		margin: 1% 0
-	}
-</style>
+	<style>
+		.home {
+			margin: 3%;
+			background-color: #EFF2F4;
+			font-size: 110%;
+		}
+		.home-container {
+			background-color: #fff;
+			border-radius: 5px;
+			padding: 1% 2% 15% 1%;
+			margin: 1% 0;
+		}
+		.home-title {
+			font-size: 200%;
+			font-weight: 500;
+			color: #1B3168;
+
+		}
+		.home-list {
+			list-style: true !important;
+			padding: 0 2%;
+		}
+		.home-list-element {
+			margin: 1% 0
+		}
+	</style>
+
+{% endblock %}
