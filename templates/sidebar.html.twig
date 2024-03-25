@@ -22,40 +22,39 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group sidebar-home">
 						<img src="image/home.svg">
-						<span class="ms-3 sidebar-element" style="color: #757575">Accueil</span>
+						<span class="ms-3 sidebar-home-element" style="color: #757575">Accueil</span>
 					</a>
 				</li>
 				<li>
-					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group sidebar-search">
 						<img src="image/glass.svg">
-						<span class="flex-1 ms-3 whitespace-nowrap sidebar-element" style="color: #757575">Recherche</span>
-
+						<span class="flex-1 ms-3 whitespace-nowrap sidebar-search-element" style="color: #757575">Recherche</span>
 					</a>
 				</li>
 				<li>
-					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white group hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-#1B3168 hover:text-red">
+					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group sidebar-math">
 						<img src="image/math.svg">
-						<span class="flex-1 ms-3 whitespace-nowrap" style="color: #757575">Mathematique</span>
+						<span class="flex-1 ms-3 whitespace-nowrap sidebar-math-element" style="color: #757575">Mathematique</span>
 					</a>
 				</li>
 				<li>
-					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group sidebar-exercise">
 						<img src="image/physics.svg">
-						<span class="flex-1 ms-3 whitespace-nowrap" style="color: #757575">Mes exercices</span>
+						<span class="flex-1 ms-3 whitespace-nowrap sidebar-exercise-element" style="color: #757575">Mes exercices</span>
 					</a>
 				</li>
 				<li>
-					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+					<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group sidebar-send">
 						<img src="image/submit.svg">
-						<span class="flex-1 ms-3 whitespace-nowrap" style="color: #757575">Soumettre</span>
+						<span class="flex-1 ms-3 whitespace-nowrap sidebar-send-element" style="color: #757575">Soumettre</span>
 					</a>
 				</li>
 			</ul>
-			<a href="#" class="flex items-center p-2 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" style="margin-top: 230%">
+			<a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group sidebar-deconnect" style="position: fixed; bottom: 20px;">
 				<img src="image/disconnection.svg">
-				<span class="flex-1 ms-3 whitespace-nowrap" style="color: #757575">Déconexion</span>
+				<span class="flex-1 ms-3 whitespace-nowrap sidebar-deconnect-element" style="color: #757575">Déconexion</span>
 			</a>
 		</div>
 	</aside>
@@ -64,5 +63,23 @@
 <style>
 	#default-sidebar {
 		box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+	}
+	.sidebar-home:hover .sidebar-home-element {
+		color: #1B3168 !important;
+	}
+	.sidebar-search:hover .sidebar-search-element {
+		color: #1B3168 !important;
+	}
+	.sidebar-math:hover .sidebar-math-element {
+		color: #1B3168 !important;
+	}
+	.sidebar-exercise:hover .sidebar-exercise-element {
+		color: #1B3168 !important;
+	}
+	.sidebar-send:hover .sidebar-send-element {
+		color: #1B3168 !important;
+	}
+	.sidebar-deconnect:hover .sidebar-deconnect-element {
+		color: #1B3168 !important;
 	}
 </style>

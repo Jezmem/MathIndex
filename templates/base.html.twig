@@ -23,7 +23,8 @@
 			{% block body %}
 				{% include "header.html.twig" %}
 				<div>
-					{% include "home.html.twig" %}
+					{# contenu à afficher #}
+					{% include "home/home.html.twig" %}
 				</div>
 			{% endblock %}
 			<footer>
@@ -31,14 +32,17 @@
 			</footer>
 		</main>
 	</body>
-</html></body></html><style>html {
-	height: 100%;
-	background-color: #EFF2F4;
-}
-main {
-	margin-left: 16rem;
-
-}
-footer {
-	bottom: 0;
-}</style>
+</html>
+<style>
+	html {
+		height: 100%;
+		background-color: #EFF2F4;
+	}
+	main {
+		margin-left: 16rem;
+		background-color: #EFF2F4;
+	}
+	footer {
+		bottom: 0;
+	}
+</style>
