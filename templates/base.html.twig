@@ -21,25 +21,24 @@
 		{% include "sidebar.html.twig" %}
 		<main>
 			{% block body %}
-				<div></div>
+				{% include "header.html.twig" %}
+				<div>
+					{% include "home.html.twig" %}
+				</div>
 			{% endblock %}
 			<footer>
 				{% include "footer.html.twig" %}
 			</footer>
 		</main>
 	</body>
-</html>
+</html></body></html><style>html {
+	height: 100%;
+	background-color: #EFF2F4;
+}
+main {
+	margin-left: 16rem;
 
-<style>
-	html {
-		height: 100%;
-		background-color: #EFF2F4;
-	}
-	main {
-		margin-left: 16rem;
-
-	}
-	footer {
-		bottom: 0;
-	}
-</style>
+}
+footer {
+	bottom: 0;
+}</style>
