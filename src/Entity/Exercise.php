@@ -12,58 +12,65 @@ class Exercise
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private $id;
+
+     #[ORM\ManyToOne(targetEntity: Thematic::class, inversedBy: 'exercices')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?Thematic $thematic = null;
+
+     #[ORM\ManyToOne(targetEntity: Classroom::class, inversedBy: 'exercices')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?Classroom $classroom = null;
+
+     #[ORM\ManyToOne(targetEntity: Course::class, inversedBy: 'exercices')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?Course $course = null;
+
+     #[ORM\ManyToOne(targetEntity: Origin::class, inversedBy: 'exercices')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?Origin $origin = null;
+
+     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'exercices')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?User $createdBy = null;
+
+     #[ORM\ManyToOne(targetEntity: File::class, inversedBy: 'exercices')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?File $exerciseFile = null;
+
+     #[ORM\ManyToOne(targetEntity: Thematic::class, inversedBy: 'exercices')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?Thematic $correctionFile = null;
+
+     #[ORM\Column(length: 255)]
+     private ?string $name  = null; 
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
-
-    #[ORM\Column]
-    private ?int $course_id = null;
-
-    #[ORM\Column]
-    private ?int $classroom_id = null;
-
-    #[ORM\Column]
-    private ?int $thematic_id = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $chapter = null;
+    private ?string $chapter  = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $keyword = null;
 
     #[ORM\Column]
-    private ?int $difficulty = null;
+    private ?int $difficulty  = null;
 
-    #[ORM\Column]
-    private ?float $duratoin = null;
-
-    #[ORM\Column]
-    private ?int $origin_id = null;
+    #[ORM\Column(type: Types::FLOAT)]
+    private ?float $duration  = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $origin_name = null;
+    private ?string $originName  = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $origin_information = null;
+    private ?string $originInformation  = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $proposed_by_type = null;
+    private ?string $proposedByType  = null; 
 
     #[ORM\Column(length: 255)]
-    private ?string $proposed_by_first_name = null;
+    private ?string $proposedByFirstName  = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $proposed_by_last_name = null;
-
-    #[ORM\Column]
-    private ?int $exercisie_file_id = null;
-
-    #[ORM\Column]
-    private ?int $correction_file_id = null;
-
-    #[ORM\Column]
-    private ?int $created_by_id = null;
+    private ?string $proposedByLastName  = null;
 
     public function getId(): ?int
     {
@@ -91,36 +98,36 @@ class Exercise
 
     public function getCourseId(): ?int
     {
-        return $this->course_id;
+        return $this->course;
     }
 
-    public function setCourseId(int $course_id): static
+    public function setCourseId(int $course): static
     {
-        $this->course_id = $course_id;
+        $this->course = $course;
 
         return $this;
     }
 
     public function getClassroomId(): ?int
     {
-        return $this->classroom_id;
+        return $this->classroom;
     }
 
-    public function setClassroomId(int $classroom_id): static
+    public function setClassroomId(int $classroom): static
     {
-        $this->classroom_id = $classroom_id;
+        $this->classroom = $classroom;
 
         return $this;
     }
 
     public function getThematicId(): ?int
     {
-        return $this->thematic_id;
+        return $this->thematic;
     }
 
-    public function setThematicId(int $thematic_id): static
+    public function setThematicId(int $thematic): static
     {
-        $this->thematic_id = $thematic_id;
+        $this->thematic = $thematic;
 
         return $this;
     }
@@ -163,120 +170,120 @@ class Exercise
 
     public function getDuration(): ?float
     {
-        return $this->duratoin;
+        return $this->duration;
     }
 
-    public function setDuration(float $duratoin): static
+    public function setDuration(float $duration): static
     {
-        $this->duratoin = $duratoin;
+        $this->duration = $duration;
 
         return $this;
     }
 
     public function getOriginId(): ?int
     {
-        return $this->origin_id;
+        return $this->origin;
     }
 
-    public function setOriginId(int $origin_id): static
+    public function setOriginId(int $origin): static
     {
-        $this->origin_id = $origin_id;
+        $this->origin = $origin;
 
         return $this;
     }
 
     public function getOriginName(): ?string
     {
-        return $this->origin_name;
+        return $this->originName;
     }
 
     public function setOriginName(string $origin_name): static
     {
-        $this->origin_name = $origin_name;
+        $this->originName = $origin_name;
 
         return $this;
     }
 
     public function getOriginInformation(): ?string
     {
-        return $this->origin_information;
+        return $this->originInformation;
     }
 
     public function setOriginInformation(string $origin_information): static
     {
-        $this->origin_information = $origin_information;
+        $this->originInformation = $origin_information;
 
         return $this;
     }
 
     public function getProposedByType(): ?string
     {
-        return $this->proposed_by_type;
+        return $this->proposedByType;
     }
 
     public function setProposedByType(string $proposed_by_type): static
     {
-        $this->proposed_by_type = $proposed_by_type;
+        $this->proposedByType = $proposed_by_type;
 
         return $this;
     }
 
     public function getProposedByFirstName(): ?string
     {
-        return $this->proposed_by_first_name;
+        return $this->proposedByFirstName;
     }
 
     public function setProposedByFirstName(string $proposed_by_first_name): static
     {
-        $this->proposed_by_first_name = $proposed_by_first_name;
+        $this->proposedByFirstName = $proposed_by_first_name;
 
         return $this;
     }
 
     public function getProposedByLastName(): ?string
     {
-        return $this->proposed_by_last_name;
+        return $this->proposedByLastName;
     }
 
     public function setProposedByLastName(string $proposed_by_last_name): static
     {
-        $this->proposed_by_last_name = $proposed_by_last_name;
+        $this->proposedByLastName = $proposed_by_last_name;
 
         return $this;
     }
 
     public function getExerciseFileId(): ?int
     {
-        return $this->exercisie_file_id;
+        return $this->exerciseFile;
     }
 
-    public function setExerciseFileId(int $exercisie_file_id): static
+    public function setExerciseFileId(int $exercise_file_id): static
     {
-        $this->exercisie_file_id = $exercisie_file_id;
+        $this->exerciseFile = $exercise_file_id;
 
         return $this;
     }
 
     public function getCorrectionFileId(): ?int
     {
-        return $this->correction_file_id;
+        return $this->correctionFile;
     }
 
     public function setCorrectionFileId(int $correction_file_id): static
     {
-        $this->correction_file_id = $correction_file_id;
+        $this->correctionFile = $correction_file_id;
 
         return $this;
     }
 
     public function getCreatedById(): ?int
     {
-        return $this->created_by_id;
+        return $this->createdBy;
     }
 
     public function setCreatedById(int $created_by_id): static
     {
-        $this->created_by_id = $created_by_id;
+        $this->createdBy = $created_by_id;
 
         return $this;
     }

@@ -16,8 +16,10 @@ class Skill
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?int $course_id = null;
+    #[ORM\ManyToOne(targetEntity: Course::class, inversedBy: 'skills')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Course $course_id = null;
+
 
     public function getId(): ?int
     {

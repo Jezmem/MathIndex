@@ -13,11 +13,14 @@ class ExerciseSkill
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $exercise_id = null;
+    #[ORM\ManyToOne(targetEntity: Exercise::class, inversedBy: 'exerciceSkills')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Exercise $exercise_id = null;
 
-    #[ORM\Column]
-    private ?int $skill_id = null;
+
+    #[ORM\ManyToOne(targetEntity: Skill::class, inversedBy: 'exerciceSkills')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Skill $skill_id = null;
 
     public function getId(): ?int
     {
