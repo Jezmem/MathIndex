@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fichiers</h1>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.exerciseFile) }}
+        {{ form_errors(form.exerciseFile) }}
+
+        {{ form_row(form.correctionFile) }}
+        {{ form_errors(form.correctionFile) }}
+
+        <button type="submit">Soumettre</button>
+    {{ form_end(form) }}
+{% endblock %}

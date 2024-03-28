@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Informations générales</h1>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.nomExercice) }}
+        {{ form_errors(form.nomExercice) }}
+
+        {{ form_row(form.matiere) }}
+        {{ form_errors(form.matiere) }}
+
+        {{ form_row(form.classe) }}
+        {{ form_errors(form.classe) }}
+
+        {{ form_row(form.thematique) }}
+        {{ form_errors(form.thematique) }}
+
+        {{ form_row(form.chapitreCours) }}
+        {{ form_errors(form.chapitreCours) }}
+
+        {{ form_row(form.competences) }}
+        {{ form_errors(form.competences) }}
+
+        {{ form_row(form.motsCles) }}
+        {{ form_errors(form.motsCles) }}
+
+        {{ form_row(form.difficulte) }}
+        {{ form_errors(form.difficulte) }}
+
+        {{ form_row(form.duree) }}
+        {{ form_errors(form.duree) }}
+
+        <button type="submit">Soumettre</button>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sources</h1>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.origin) }}
+        {{ form_errors(form.origin) }}
+
+        {{ form_row(form.bookOrWebsite) }}
+        {{ form_errors(form.bookOrWebsite) }}
+
+        {{ form_row(form.additionalInformation) }}
+        {{ form_errors(form.additionalInformation) }}
+
+        {{ form_row(form.proposedBy) }}
+        {{ form_errors(form.proposedBy) }}
+
+        {{ form_row(form.firstName) }}
+        {{ form_errors(form.firstName) }}
+
+        {{ form_row(form.lastName) }}
+        {{ form_errors(form.lastName) }}
+
+        <button type="submit">Soumettre</button>
+    {{ form_end(form) }}
+{% endblock %}

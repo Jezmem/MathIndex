@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mes exercices</h1>
+
+    {% for exercice in exercices %}
+        <div>
+            <h2>{{ exercice.title }}</h2>
+            <a href="{{ path('modifier_exercice', {id: exercice.id}) }}">Modifier</a>
+            <button class="delete-button" data-id="{{ exercice.id }}">Supprimer</button>
+        </div>
+    {% endfor %}
+
+    <script>
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', () => {
+                if (confirm('Êtes-vous sûr de vouloir supprimer cet exercice ?')) {
+                    fetch(`/supprimer-exercice/${button.dataset.id}`, {method: 'POST'})
+                        .then(() => window.location.reload());
+                }
+            });
+        });
+    </script>
+{% endblock %}
