@@ -18,7 +18,7 @@ class Skill
 
     #[ORM\ManyToOne(targetEntity: Course::class, inversedBy: 'skills')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Course $course_id = null;
+    private ?Course $course = null;
 
 
     public function getId(): ?int
@@ -45,14 +45,14 @@ class Skill
         return $this;
     }
 
-    public function getCourseId(): ?int
+    public function getCourseId(): ?Course
     {
-        return $this->course_id;
+        return $this->course;
     }
 
-    public function setCourseId(int $course_id): static
+    public function setCourseId(Course $course): static
     {
-        $this->course_id = $course_id;
+        $this->course = $course;
 
         return $this;
     }

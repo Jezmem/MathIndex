@@ -1,50 +1,37 @@
 <?php
-// src/DataFixtures/SkillFixtures.php
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
 use App\Entity\Skill;
 use App\Entity\Course;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
 
 class SkillFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        // Récupération de quelques cours pour les lier aux compétences
-        $courses = $manager->getRepository(Course::class)->findAll();
+        // Récupération d'un cours
+        $course = $manager->getRepository(Course::class)->findOneBy(['name' => 'Mathématiques']);
+        if (!$course) {
+            // Si le cours n'existe pas, vous devrez le créer ou utiliser un autre cours existant
+            $course = new Course();
+            $course->setName('Mathématiques');
+            // Ajoutez d'autres propriétés et configurez-les selon vos besoins
 
+            $manager->persist($course);
+            $manager->flush();
+        }
 
-            $skill1 = new Skill();
-            $skill1->setName('Chercher');
-            $skill1->setCourseId(1);
-            $manager->persist($skill1);
+        // Création des compétences pour le cours de mathématiques
+        $skillNames = ['Arithmétique', 'Algèbre linéaire', 'Géométrie euclidienne', 'Calcul différentiel'];
+        foreach ($skillNames as $skillName) {
+            $skill = new Skill();
+            $skill->setName($skillName);
+            $skill->setCourseId($course);
 
-            $skill2 = new Skill();
-            $skill2->setName('Représenter');
-            $skill2->setCourseId(1);
-            $manager->persist($skill2);
-
-            $skill3 = new Skill();
-            $skill3->setName('Calculer');
-            $skill3->setCourseId(1);
-            $manager->persist($skill3);
-
-            $skill4 = new Skill();
-            $skill4->setName('Modéliser');
-            $skill4->setCourseId(1);
-            $manager->persist($skill4);
-
-            $skill5 = new Skill();
-            $skill5->setName('Raisonner');
-            $skill5->setCourseId(1);
-            $manager->persist($skill5);
-
-            $skill6 = new Skill();
-            $skill6->setName('Communiquer');
-            $skill6->setCourseId(1);
-            $manager->persist($skill6);
+            $manager->persist($skill);
+        }
 
         $manager->flush();
     }

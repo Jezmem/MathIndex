@@ -12,19 +12,13 @@ class Exercise
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private $id;
+    private ?int $id = null;
 
-     #[ORM\ManyToOne(targetEntity: Thematic::class, inversedBy: 'exercices')]
-     #[ORM\JoinColumn(nullable: false)]
-     private ?Thematic $thematic = null;
 
      #[ORM\ManyToOne(targetEntity: Classroom::class, inversedBy: 'exercices')]
      #[ORM\JoinColumn(nullable: false)]
      private ?Classroom $classroom = null;
 
-     #[ORM\ManyToOne(targetEntity: Course::class, inversedBy: 'exercices')]
-     #[ORM\JoinColumn(nullable: false)]
-     private ?Course $course = null;
 
      #[ORM\ManyToOne(targetEntity: Origin::class, inversedBy: 'exercices')]
      #[ORM\JoinColumn(nullable: false)]
@@ -38,9 +32,6 @@ class Exercise
      #[ORM\JoinColumn(nullable: false)]
      private ?File $exerciseFile = null;
 
-     #[ORM\ManyToOne(targetEntity: Thematic::class, inversedBy: 'exercices')]
-     #[ORM\JoinColumn(nullable: false)]
-     private ?Thematic $correctionFile = null;
 
      #[ORM\Column(length: 255)]
      private ?string $name  = null; 
@@ -72,6 +63,19 @@ class Exercise
     #[ORM\Column(length: 255)]
     private ?string $proposedByLastName  = null;
 
+    //TODO: 
+    #[ORM\ManyToOne(targetEntity: Thematic::class, inversedBy: 'exercices')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Thematic $thematic = null;
+
+    #[ORM\ManyToOne(targetEntity: File::class, inversedBy: 'exercices')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?File $correctionFile = null;
+
+     #[ORM\ManyToOne(targetEntity: Course::class, inversedBy: 'exercices')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?Course $course = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -96,41 +100,19 @@ class Exercise
         return $this;
     }
 
-    public function getCourseId(): ?int
-    {
-        return $this->course;
-    }
 
-    public function setCourseId(int $course): static
-    {
-        $this->course = $course;
-
-        return $this;
-    }
-
-    public function getClassroomId(): ?int
+    public function getClassroomId(): ?Classroom
     {
         return $this->classroom;
     }
 
-    public function setClassroomId(int $classroom): static
+    public function setClassroomId(Classroom $classroom): static
     {
         $this->classroom = $classroom;
 
         return $this;
     }
 
-    public function getThematicId(): ?int
-    {
-        return $this->thematic;
-    }
-
-    public function setThematicId(int $thematic): static
-    {
-        $this->thematic = $thematic;
-
-        return $this;
-    }
 
     public function getChapter(): ?string
     {
@@ -180,12 +162,12 @@ class Exercise
         return $this;
     }
 
-    public function getOriginId(): ?int
+    public function getOriginId(): ?Origin
     {
         return $this->origin;
     }
 
-    public function setOriginId(int $origin): static
+    public function setOriginId(Origin $origin): static
     {
         $this->origin = $origin;
 
@@ -252,38 +234,62 @@ class Exercise
         return $this;
     }
 
-    public function getExerciseFileId(): ?int
+    public function getExerciseFileId(): ?File
     {
         return $this->exerciseFile;
     }
 
-    public function setExerciseFileId(int $exercise_file_id): static
+    public function setExerciseFileId(File $exercise_file): static
     {
-        $this->exerciseFile = $exercise_file_id;
+        $this->exerciseFile = $exercise_file;
 
         return $this;
-    }
+  }
 
-    public function getCorrectionFileId(): ?int
-    {
-        return $this->correctionFile;
-    }
-
-    public function setCorrectionFileId(int $correction_file_id): static
-    {
-        $this->correctionFile = $correction_file_id;
-
-        return $this;
-    }
-
-    public function getCreatedById(): ?int
+    public function getCreatedById(): ?User
     {
         return $this->createdBy;
     }
 
-    public function setCreatedById(int $created_by_id): static
+    public function setCreatedById(User $created_by): static
     {
-        $this->createdBy = $created_by_id;
+        $this->createdBy = $created_by;
+
+        return $this;
+    }
+
+    public function getThematic(): ?Thematic
+    {
+        return $this->thematic;
+    }
+
+    public function setThematic(Thematic $thematic): static
+    {
+        $this->thematic = $thematic;
+
+        return $this;
+    }
+
+    public function getCorrectionFile(): ?File
+    {
+        return $this->CorrectionFile;
+    }
+
+    public function setCorrectionFile(File $CorrectionFile): static
+    {
+        $this->CorrectionFile = $CorrectionFile;
+
+        return $this;
+    }
+
+    public function getCourse(): ?Course
+    {
+        return $this->course;
+    }
+
+    public function setCourse(Course $course): static
+    {
+        $this->course = $course;
 
         return $this;
     }

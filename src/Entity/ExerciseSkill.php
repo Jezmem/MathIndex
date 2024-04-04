@@ -15,38 +15,38 @@ class ExerciseSkill
 
     #[ORM\ManyToOne(targetEntity: Exercise::class, inversedBy: 'exerciceSkills')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Exercise $exercise_id = null;
+    private ?Exercise $exercise = null;
 
 
     #[ORM\ManyToOne(targetEntity: Skill::class, inversedBy: 'exerciceSkills')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Skill $skill_id = null;
+    private ?Skill $skill = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getExerciseId(): ?int
+    public function getExerciseId(): ?Exercise
     {
-        return $this->exercise_id;
+        return $this->exercise;
     }
 
-    public function setExerciseId(int $exercise_id): static
+    public function setExerciseId(Exercise $exercise): static
     {
-        $this->exercise_id = $exercise_id;
+        $this->exercise = $exercise;
 
         return $this;
     }
 
-    public function getSkillId(): ?int
+    public function getSkillId(): ?Skill
     {
-        return $this->skill_id;
+        return $this->skill;
     }
 
-    public function setSkillId(int $skill_id): static
+    public function setSkillId(Skill $skill): static
     {
-        $this->skill_id = $skill_id;
+        $this->skill = $skill;
 
         return $this;
     }
