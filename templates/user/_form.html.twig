@@ -1,4 +1,5 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Enregister') }}</button>
+    <a href="{{ path('app_user_index') }}" class="btn btn-light"> < Retour à la liste</a>
+    <button class="btn btn-light">{{ button_label|default('Enregister') }}</button>
 {{ form_end(form) }}

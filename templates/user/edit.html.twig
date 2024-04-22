@@ -1,11 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}Modifier contributeur{% endblock %}
 
 {% block body %}
-    <h1>Modifier un contrubuteur</h1>
+   
+    <div class="bg-white rounded-lg  mt-5 mx-auto" style="width : 90%;">
+        <div class="align-items-center mb-3">
+            <h1 class="fw-bold mt-5">Modifier un contributeur</h1>
+            {{ form_start(form) }}
 
-    {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+            <div class="row">
+                <div class="col-md-6 ms-5" style="width : 40%;">
+                    <div class="mb-3">
+                        {{ form_label(form.last_name) }}
+                        {{ form_widget(form.last_name, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
-    <a href="{{ path('app_user_index') }}"> < Retour a la liste</a>
+                    <div class="mb-3">
+                        {{ form_label(form.first_name) }}
+                        {{ form_widget(form.first_name, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(form.password) }}
+                        {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6 ms-5" style="width : 40%;">
+                    <div class="mb-3">
+                        {{ form_label(form.roles) }}
+                        {{ form_widget(form.roles, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
 {% endblock %}

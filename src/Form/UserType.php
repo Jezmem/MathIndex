@@ -8,21 +8,40 @@ use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('last_name')
-            ->add('first_name')
-            ->add('email')
-            ->add('password')
+            ->add('last_name', TextType::class, [
+                'label' => "Nom :",
+                'required' => false,
+            ])
+
+            ->add('first_name',TextType::class, [
+                'label' => "Prénom :",
+                'required' => false,
+            ])
+
+            ->add('email', TextType::class, [
+                'label' => "Email :",
+                'required' => false,
+            ])
+
+            ->add('password', PasswordType::class, [
+                'label' => "Mot de passe :",
+                'required' => false,
+                'empty_data' => '',
+            ])
         ;
 
         // Add roles field only if the user doesn't have ROLE_ADMIN
         if (!in_array('ROLE_ADMIN', $options['user_roles'])) {
             $builder->add('roles', ChoiceType::class, [
+                'label' => "Rôle :",
                 'required' => true,
                 'multiple' => false,
                 'expanded' => false,
