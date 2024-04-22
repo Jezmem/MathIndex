@@ -23,16 +23,17 @@ class SearchController extends AbstractController
         $this->entityManager = $entityManager;
         $this->exerciseRepository = $exerciseRepository; // Affectez le paramètre $exerciseRepository à la propriété $exerciseRepository
     }
-    
+
     #[Route('/search', name: 'search')]
     public function accueil(Request $request): Response
     {
         $searchCriteria = [];
         $searchCriteria['classroom'] = $request->request->get('classroom');
         $searchCriteria['thematic'] = $request->request->get('thematic');
-        $searchCriteria['keyword'] = $request->request->get('keyword');
-        // Récupérer les critères de recherche depuis la requête
-        
+        $searchCriteria['keywords'] = $request->request->get('keywords');
+
+        var_dump($searchCriteria
+    );
         $classrooms = $this->entityManager->getRepository(Classroom::class)->findAll();
         $thematics = $this->entityManager->getRepository(Thematic::class)->findAll();
         // Utilisez $this->exerciseRepository pour rechercher les exercices
