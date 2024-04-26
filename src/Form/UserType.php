@@ -6,34 +6,51 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            // ->add('searchTerm', SearchType::class, [
+            //     'label' => false,
+            //     'required' => false,
+            //     'attr' => [
+            //     #'placeholder' => 'Rechercher par nom, prénom ou email...',
+            //     ],
+            // ])
             ->add('last_name', TextType::class, [
                 'label' => "Nom :",
                 'required' => false,
+                'attr' => [
+                'placeholder' => 'Saissisez le nom du contributeur',
+                ],
             ])
-
-            ->add('first_name',TextType::class, [
+            ->add('first_name', TextType::class, [
                 'label' => "Prénom :",
                 'required' => false,
+                'attr' => [
+                'placeholder' => 'Saissisez le prénom',
+                ],
             ])
-
             ->add('email', TextType::class, [
                 'label' => "Email :",
                 'required' => false,
+                'attr' => [
+                'placeholder' => "Saissisez l'émail" ,
+                ],
             ])
-
             ->add('password', PasswordType::class, [
                 'label' => "Mot de passe :",
                 'required' => false,
+                'attr' => [
+                'placeholder' => 'Saissisez le mot de passe',
+                ],
                 'empty_data' => '',
             ])
         ;
@@ -65,14 +82,11 @@ class UserType extends AbstractType
         }
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => User::class,
             'user_roles' => [], 
         ]);
     }
-
-
 }
-    

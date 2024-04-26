@@ -5,10 +5,16 @@
 {% block body %}
     <div class="m-4">
         <h1 class="font-bold text-3xl pb-6">Gestion des contributeurs</h1>
-        <p>Rechercher un contributeur par nom, prénom ou email :</p>
-        <a class="btn btn-light p-3">Rechercher</a>
         <a href="{{ path('app_user_new') }}" class="btn btn-success p-3">Ajouter +</a>
         <div class="bg-white rounded-lg p-8">
+            <p>Rechercher un contributeur par nom, prénom ou email :</p>
+            {# Formulaire de recherche #}
+            <form method="get" action="{{ path('app_user_index') }}">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control w-20" name="q">
+                    <button class="btn ms-3 p-3" style="background-color: #F6F6F6;" type="submit">Rechercher</button>
+                </div>
+            </form>
             <div class="relative overflow-x-auto sm:rounded-lg">
                 <ul class="list-unstyled" style="font-family: 'Noto Sans', sans-serif;">
                     <li class="d-inline me-3 pt-2 ps-2 pe-2 pb-1" style="background-color: #1B3168; border-top-left-radius: 15px; border-top-right-radius: 10px;">
