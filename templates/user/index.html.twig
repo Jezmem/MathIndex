@@ -3,43 +3,43 @@
 {% block title %}Gestion des utilisateurs{% endblock %}
 
 {% block body %}
-    <div class="m-4">
-        <h1 class="font-bold text-3xl pb-6">Gestion des contributeurs</h1>
+    <div class="m-4" style="font-size: 20px;">
         <div class="bg-white rounded-lg p-8">
+            <h1 class="font-bold text-3xl pb-6">Gestion des contributeurs</h1>
             <p>Rechercher un contributeur par nom, prénom ou email :</p>
             {# Formulaire de recherche #}
             <form method="get" action="{{ path('app_user_index') }}">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control rounded-lg" name="q">
-                    <button class="btn ms-3 p-3" style="background-color: #F6F6F6;" type="submit">Rechercher</button>
-                    <a href="{{ path('app_user_new') }}" class="btn btn-success ms-3 p-3">Ajouter +</a>
+                    <input type="text" class="form-control rounded-lg me-5" name="q">
+                    <button class="btn ms-5 p-3 me-5 rounded" style="background-color: #F6F6F6;" type="submit">Rechercher</button>
+                    <a href="{{ path('app_user_new') }}" class="btn rounded ms-3 p-3 me-5 text-light" style="background-color : #52B788">Ajouter +</a>
                 </div>
             </form>
-            <div class="relative overflow-x-auto sm:rounded-lg">
-                <ul class="list-unstyled" style="font-family: 'Noto Sans', sans-serif;">
-                    <li class="d-inline me-3 pt-2 ps-2 pe-2 pb-1" style="background-color: #1B3168; border-top-left-radius: 15px; border-top-right-radius: 10px;">
+            <div class="relative overflow-x-auto rounded mt-5" >
+                <ul class="list-unstyled" style="font-family: 'Noto Sans', sans-serif; font-size: 25px;">
+                    <li class="d-inline pt-2 ps-3 pe-3 pb-1" style="background-color: #1B3168; margin-right: 2%; border-top-left-radius: 20%; border-top-right-radius: 20%;">
                         <a href="{{ path('app_user_index') }}" class="text-white">Contributeur</a>
                     </li>
-                    <li class="d-inline me-3 pt-2 ps-2 pe-2 pb-1" style="background-color: #1B3168;  border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                   <li class="d-inline pt-2 ps-3 pe-3 pb-1" style="background-color: #1B3168; margin-right: 2%; border-top-left-radius: 20%; border-top-right-radius: 20%;">
                         <a href="#" class="text-white">Exercices</a>
                     </li>
-                    <li class="d-inline me-3 pt-2 ps-2 pe-2 pb-1" style="background-color: #1B3168;  border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                    <li class="d-inline pt-2 ps-3 pe-3 pb-1" style="background-color: #1B3168; margin-right: 2%; border-top-left-radius: 20%; border-top-right-radius: 20%;">
                         <a href="#" class="text-white">Matières</a>
                     </li>
-                    <li class="d-inline me-3 pt-2 ps-2 pe-2 pb-1" style="background-color: #1B3168;  border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                    <li class="d-inline pt-2 ps-3 pe-3 pb-1" style="background-color: #1B3168; margin-right: 2%; border-top-left-radius: 20%; border-top-right-radius: 20%;">
                         <a href="#" class="text-white">Classes</a>
                     </li>
-                    <li class="d-inline me-3 pt-2 ps-2 pe-2 pb-1" style="background-color: #1B3168;  border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                    <li class="d-inline pt-2 ps-3 pe-3 pb-1" style="background-color: #1B3168; margin-right: 2%; border-top-left-radius: 20%; border-top-right-radius: 20%;">
                         <a href="#" class="text-white">Thématiques</a>
                     </li>
-                    <li class="d-inline me-3 pt-2 ps-2 pe-2 pb-1" style="background-color: #1B3168;  border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                    <li class="d-inline pt-2 ps-3 pe-3 pb-1" style="background-color: #1B3168; margin-right: 2%; border-top-left-radius: 20%; border-top-right-radius: 20%;">
                         <a href="#" class="text-white">Compétences</a>
                     </li>
-                    <li class="d-inline me-3 pt-2 ps-2 pe-2 pb-1" style="background-color: #1B3168;  border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                    <li class="d-inline pt-2 ps-3 pe-3 pb-1" style="background-color: #1B3168; margin-right: 2%; border-top-left-radius: 20%; border-top-right-radius: 20%;">
                         <a href="#" class="text-white">Origines</a>
                     </li>
                 </ul>   
-                <table class="table tableViewContri w-full text-sm text-left rtl:text-right text-gray-500  dark:text-gray-400 border border-gray-300">
+                <table class="table tableViewContri w-full text-sm text-left rtl:text-right text-gray-500  dark:text-gray-400 border border-gray-300" style="font-size: 20px;">
                     <thead class="bg-gray-100 ">
                         <tr class="bg-secondary!important">
                             <th scope="col" class="px-6 py-3">Nom</th>
