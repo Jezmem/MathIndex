@@ -4,11 +4,12 @@
 
 {% block body %}
     <div>
-        <h3 style="color:#1B3168 ;">Administration</h3>
+        <h3 class="fw-bold fs-2" style="color:#1B3168 ; margin-left: 5%; margin-top: 5%;">Administration</h3>
     </div>
     <div class="container mt-5">
+        {{ include('navbarAdmin.html.twig') }}  
         <div class="bg-white rounded-lg p-5">
-            <h1 class="fw-bold mb-5">Ajouter un contributeur</h1>
+            <h1 class="fw-bold fs-3 mb-5">Ajouter un contributeur</h1>
             {{ form_start(form) }}
 
             <div class="row">
@@ -44,7 +45,7 @@
             
             <div class="d-flex mt-4">
                 <a href="{{ path('app_user_index') }}" class="btn" style="background-color: #F6F6F6;"> < Retour à la liste</a>
-                <button type="submit" class="btn ms-5" style="background-color: #F6F6F6;">{{ button_label|default('Enregistrer') }}</button>
+                <button type="submit" class="btn ms-5" style="background-color: #F6F6F6;">Enregistrer</button>
             </div>
             {{ form_end(form) }}
         </div>
