@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une classe{% endblock %}
+{% block title %}Ajouter une matière{% endblock %}
 
 {% block body %}
     <div>
@@ -9,7 +9,7 @@
     <div class="container mt-5">
         {{ include('navbarAdmin.html.twig') }}  
         <div class="bg-white rounded-lg p-5">
-         <h1 class="fw-bold fs-3 mb-5">Ajouter une classe</h1>
+         <h1 class="fw-bold fs-3 mb-5">Ajouter une matière</h1>
             {{ form_start(form) }}
             <div class="row">
                 <div class="col-md-6">
@@ -19,7 +19,7 @@
                     </div>
             </div>
     <div class="d-flex mt-4">
-        <a href="{{ path('app_classroom_index') }}" class="btn" style="background-color: #F6F6F6;">< Retour à la liste</a>
+        <a href="{{ path('app_course_index') }}" class="btn" style="background-color: #F6F6F6;">< Retour à la liste</a>
         <div class="btn ms-5" style="background-color: #F6F6F6;">{{ form_row(form.submit) }}</div>
          {{ form_end(form) }}
     </div>
