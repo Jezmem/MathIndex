@@ -272,12 +272,12 @@ class Exercise
 
     public function getCorrectionFile(): ?File
     {
-        return $this->CorrectionFile;
+        return $this->correctionFile;
     }
 
     public function setCorrectionFile(File $CorrectionFile): static
     {
-        $this->CorrectionFile = $CorrectionFile;
+        $this->correctionFile = $CorrectionFile;
 
         return $this;
     }
