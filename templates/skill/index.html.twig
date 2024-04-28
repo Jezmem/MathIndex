@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Skill index</h1>
-
+     {{ knp_pagination_render(pagination) }}
     <table class="table">
         <thead>
             <tr>
@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for skill in skills %}
+        {% for skill in pagination %}
             <tr>
                 <td>{{ skill.name }}</td>
                  <td>{{ skill.getCourseId().name }}</td>
