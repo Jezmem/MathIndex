@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des thématique{% endblock %}
+
+{% block body %}
+    <div>
+        <h3 class="fw-bold fs-2" style="color:#1B3168 ; margin-left: 5%; margin-top: 5%;">Administration</h3>
+    </div>
+    <div class="m-4" style="font-size: 20px;">
+        {{ include('navbarAdmin.html.twig') }}  
+        <div class="bg-white rounded-lg p-8">
+            <h1 class="font-bold text-3xl pb-6">Gestion des thématique</h1>
+            <p>Rechercher une thématique par nom :</p>
+            {# Formulaire de recherche #}
+            <form method="get" action="{{ path('app_origin_index') }}">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control rounded-lg me-5" name="q">
+                    <button class="btn ms-5 p-3 me-5 rounded" style="background-color: #F6F6F6;" type="submit">Rechercher</button>
+                    <a href="{{ path('app_thematic_new') }}" class="btn rounded ms-3 p-3 me-5 text-light" style="background-color : #52B788">Ajouter +</a>
+                </div>
+            </form>
+            <div class="relative overflow-x-auto rounded mt-5" >  
+                 <table class="table tableViewContri w-full text-sm text-left rtl:text-right text-gray-500  dark:text-gray-400 border border-gray-300" style="font-size: 20px;">
+                    <thead class="bg-gray-100 ">
+                        <tr class="bg-secondary!important">
+                        <th scope="col" class="px-6 py-3">Nom</th>  
+                        <th scope="col" class="px-6 py-3">Matière</th>  
+                        <th scope="col" class="px-6 py-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for thematic in thematics %}
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td scope="row" class="px-6 py-4 text-secondary">{{ thematic.name }}</td>
+                        <td scope="row" class="px-6 py-4 text-secondary">{{ thematic.getCourseId().name }}</td>
+                        <td scope="row" class="px-6 py-4 text-secondary d-flex align-items-center" colspan="2">
+                            <a href="{{ path('app_thematic_edit', {'id': thematic.id}) }}">Modifier</a>
+                            {{ include('thematic/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">Aucune thématique trouvée</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

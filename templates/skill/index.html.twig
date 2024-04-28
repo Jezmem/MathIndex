@@ -32,7 +32,7 @@
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td scope="row" class="px-6 py-4 text-secondary">{{ skill.name }}</td>
                 <td scope="row" class="px-6 py-4 text-secondary">{{ skill.getCourseId().name }}</td>
-               <td scope="row" class="px-6 py-4 text-secondary d-flex align-items-center" colspan="2">
+                <td scope="row" class="px-6 py-4 text-secondary d-flex align-items-center" colspan="2">
                     <a href="{{ path('app_skill_edit', {'id': skill.id}) }}">Modifier</a>
                       {{ include('skill/_delete_form.html.twig') }}
                 </td>
