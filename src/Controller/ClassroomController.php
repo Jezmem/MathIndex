@@ -6,6 +6,7 @@ use App\Entity\Classroom;
 use App\Form\ClassroomType;
 use App\Repository\ClassroomRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class ClassroomController extends AbstractController
 {
     #[Route('/', name: 'app_classroom_index', methods: ['GET'])]
-    public function index(ClassroomRepository $classroomRepository): Response
+    public function index(ClassroomRepository $classroomRepository, Request $request, PaginatorInterface $paginator): Response
     {
+         $classroom = $classroomRepository->findAll();
+            // Paginator
+            $pagination = $paginator->paginate(
+            $classroom,
+            $request->query->get('page', 1),
+            1
+        );
         return $this->render('classroom/index.html.twig', [
-            'classrooms' => $classroomRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
 

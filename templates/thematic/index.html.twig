@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for thematic in thematics %}
+                {% for thematic in pagination %}
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td scope="row" class="px-6 py-4 text-secondary">{{ thematic.name }}</td>
                         <td scope="row" class="px-6 py-4 text-secondary">{{ thematic.getCourseId().name }}</td>
@@ -45,6 +45,7 @@
                 {% endfor %}
                 </tbody>
             </table>
+            {{ knp_pagination_render(pagination) }}
         </div>
     </div>
 {% endblock %}

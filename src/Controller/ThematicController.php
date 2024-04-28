@@ -6,6 +6,7 @@ use App\Entity\Thematic;
 use App\Form\ThematicType;
 use App\Repository\ThematicRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class ThematicController extends AbstractController
 {
     #[Route('/', name: 'app_thematic_index', methods: ['GET'])]
-    public function index(ThematicRepository $thematicRepository): Response
-    {
+    public function index(ThematicRepository $thematicRepository, Request $request, PaginatorInterface $paginator): Response
+    {   
+        $thematic = $thematicRepository->findAll();
+        // Paginator
+        $pagination = $paginator->paginate(
+            $thematic,
+            $request->query->get('page', 1),
+            5
+        );
         return $this->render('thematic/index.html.twig', [
-            'thematics' => $thematicRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
 
