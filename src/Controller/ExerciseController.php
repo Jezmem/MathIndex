@@ -15,10 +15,28 @@ use Symfony\Component\Routing\Annotation\Route;
 class ExerciseController extends AbstractController
 {
     #[Route('/', name: 'app_exercise_index', methods: ['GET'])]
-    public function index(ExerciseRepository $exerciseRepository): Response
+    public function index(Request $request, ExerciseRepository $exerciseRepository): Response
     {
+        $exampleExercises = $exerciseRepository->findBy([], ['id' => 'DESC'], 3);
+
+        $page = $request->query->getInt('page', 1);
+        $limit = 5;
+        $offset = ($page - 1) * $limit;
+
+        // Récupérer le nombre total d'exercices
+        $totalExercises = $exerciseRepository->count([]);
+
+        // Récupérer les exercices pour la page actuelle
+        $exercises = $exerciseRepository->findBy([], ['id' => 'DESC'], $limit, $offset);
+
+        // Calculer le nombre total de pages
+        $totalPages = ceil($totalExercises / $limit);
+
         return $this->render('exercise/index.html.twig', [
-            'exercises' => $exerciseRepository->findAll(),
+            'exercises' => $exercises,
+            'exampleExercises' => $exampleExercises,
+            'currentPage' => $page,
+            'totalPages' => $totalPages,
         ]);
     }
 

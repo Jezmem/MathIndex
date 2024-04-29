@@ -3,51 +3,173 @@
 {% block title %}Exercise index{% endblock %}
 
 {% block body %}
-    <h1>Exercise index</h1>
-
+<div class="mathematique">
+<h1 class="math-title">Nouveautés</h1>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Chapter</th>
-                <th>Keyword</th>
-                <th>Difficulty</th>
-                <th>Duration</th>
-                <th>OriginName</th>
-                <th>OriginInformation</th>
-                <th>ProposedByType</th>
-                <th>ProposedByFirstName</th>
-                <th>ProposedByLastName</th>
-                <th>actions</th>
+                <th class="search-table-title" scope="col">Nom</th>
+                <th class="search-table-title" scope="col">Difficulté</th>
+                <th class="search-table-title" scope="col">Mot-clés</th>
+                <th class="search-table-title" scope="col">Durée</th>
+                <th class="search-table-title" scope="col">Fichier</th>
             </tr>
         </thead>
         <tbody>
-        {% for exercise in exercises %}
             <tr>
-                <td>{{ exercise.id }}</td>
-                <td>{{ exercise.name }}</td>
-                <td>{{ exercise.chapter }}</td>
-                <td>{{ exercise.keyword }}</td>
-                <td>{{ exercise.difficulty }}</td>
-                <td>{{ exercise.duration }}</td>
-                <td>{{ exercise.originName }}</td>
-                <td>{{ exercise.originInformation }}</td>
-                <td>{{ exercise.proposedByType }}</td>
-                <td>{{ exercise.proposedByFirstName }}</td>
-                <td>{{ exercise.proposedByLastName }}</td>
-                <td>
-                    <a href="{{ path('app_exercise_show', {'id': exercise.id}) }}">show</a>
-                    <a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">edit</a>
-                </td>
+                {% for exercise in exercises %}
+
+                    <td>{{ exercise.name }}</td>
+                    <td>Niveau
+                        {{ exercise.difficulty }}</td>
+                    <td>
+                        <div class="search-keyword-container">
+                            <p class="search-keyword">{{ exercise.keyword }}</p>
+                        </div>
+                    </td>
+                    <td>{{ exercise.duration }}</td>
+                    <td>
+                        <div class="search-file-container">
+                            <a class="search-file" href="#"><img src="../image/file.svg" style="margin: 0 5%">Exercice</a>
+                            <a class="search-file" href="#"><img src="../image/file.svg" style="margin: 0 5%">Corrigé</a>
+                        </div>
+                    </td>
+                {% endfor %}
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="12">no records found</td>
-            </tr>
-        {% endfor %}
         </tbody>
     </table>
+</div>
+<div class="mathematique">
+<h1 class="math-title">Tous les exercices</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="search-table-title" scope="col">Nom</th>
+                <th class="search-table-title" scope="col">Difficulté</th>
+                <th class="search-table-title" scope="col">Mot-clés</th>
+                <th class="search-table-title" scope="col">Durée</th>
+                <th class="search-table-title" scope="col">Fichier</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for exampleExercise in exampleExercises %}
 
-    <a href="{{ path('app_exercise_new') }}">Create new</a>
+                    <td>{{ exampleExercise.name }}</td>
+                    <td>Niveau
+                        {{ exampleExercise.difficulty }}</td>
+                    <td>
+                        <div class="search-keyword-container">
+                            <p class="search-keyword">{{ exampleExercise.keyword }}</p>
+                        </div>
+                    </td>
+                    <td>{{ exampleExercise.duration }}</td>
+                    <td>
+                        <div class="search-file-container">
+                            <a class="search-file" href="#"><img src="../image/file.svg" style="margin: 0 5%">Exercice</a>
+                            <a class="search-file" href="#"><img src="../image/file.svg" style="margin: 0 5%">Corrigé</a>
+                        </div>
+                    </td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {% if currentPage > 1 %}
+      <li class="page-item">
+        <a class="page-link" href="{{ path('app_exercise_index', {'page': currentPage - 1}) }}"><</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <a class="page-link"><</a>
+      </li>
+    {% endif %}
+    {% for page in 1..totalPages %}
+      <li class="page-item {% if page == currentPage %}active{% endif %}">
+        <a class="page-link" href="{{ path('app_exercise_index', {'page': page}) }}">{{ page }}</a>
+      </li>
+    {% endfor %}
+    {% if currentPage < totalPages %}
+      <li class="page-item">
+        <a class="page-link" href="{{ path('app_exercise_index', {'page': currentPage + 1}) }}">></a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <a class="page-link">></a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+
+
+<style>
+    {
+        margin: 3%;
+        background-color: #EFF2F4;
+        font-size: 110%;
+    }
+    .search-container {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 2% 2% 15%;
+        margin: 1% 0;
+        color: #000000;
+    }
+    .search-form {
+        display: flex;
+        align-items: center;
+    }
+    .search-title {
+        font-size: 200%;
+        font-weight: 500;
+        color: #1B3168;
+
+    }
+    .search-label {
+        margin-bottom: 5%
+    }
+    .search-select {
+        padding-right: 2%;
+    }
+    .search-table-title {
+        background-color: #DBDBDB !important;
+    }
+    .search-keyword {
+        background-color: #DBDBDB;
+        width: fit-content;
+        padding: 2px 10px;
+        border-radius: 50px;
+        margin: 1%;
+    }
+    .search-keyword-container {
+        display: flex;
+        align-items: center;
+    }
+    .search-file-container {
+        display: flex;
+        align-items: center;
+    }
+    .search-file {
+        display: flex;
+        align-items: center;
+        margin: 3%;
+    }
+    .table{
+        margin: 2%;
+        width: 90%;
+        border-radius: 10px;
+    }
+    .mathematique{
+        background-color: white;
+        margin: 3%;
+        border-radius: 10px;
+    }
+    .math-title{
+        font-size: 120%;
+        font-weight: 600;
+        padding: 2% 0 0 2%
+    }
+</style>
 {% endblock %}
