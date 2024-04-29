@@ -13,3 +13,18 @@ Technologies utilisées :
 - ["ROLE_ADMIN"] : -> admin 
 - ["ROLE_STUDENT"] -> étudient 
 - ["ROLE_TEACHER"] -> enseigant 
+
+  1 - Initialisez le projet en exécutant la commande suivante à la racine du projet :
+
+  composer install
+
+  2 - Créez et initialisez la base de données :
+  php bin/console d:d:c
+  php bin/console d:s:u --force
+  php bin/console d:f:l -n
+
+  3 - Acces au site :
+
+  http://localhost:8000/
+
+  
