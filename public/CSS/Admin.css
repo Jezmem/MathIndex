@@ -1,0 +1,43 @@
+.admin__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 0% 4% 0%;
+    background-color: #fff;
+    color:#1B3168 ;
+}
+
+.admin__pagination .current {
+    color:#1B3168 ;
+    background-color: #fff;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+.admin__pagination .current {
+    border-color: #1B3168;
+    
+}
+
+.admin__pagination .first a, .admin__pagination .previous a, .admin__pagination .page a, .admin__pagination .next a {
+    color:#1B3168 ;;
+    background-color: #fff;
+    padding: 6px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.admin__pagination .page a
+{
+    border-color: #1B3168;
+}
+
+.admin__pagination .last a
+{
+    display: none;
+}
+
+.admin__pagination .first a{
+    display: none;
+}

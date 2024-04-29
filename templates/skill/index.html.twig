@@ -44,5 +44,8 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="admin__pagination" style="border-color: #1B3168;">
+        {{ knp_pagination_render(pagination) }}      
+    </div>
     {{ knp_pagination_render(pagination) }}
 {% endblock %}

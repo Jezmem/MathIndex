@@ -23,7 +23,7 @@ class ClassroomController extends AbstractController
             $pagination = $paginator->paginate(
             $classroom,
             $request->query->get('page', 1),
-            1
+            5
         );
         return $this->render('classroom/index.html.twig', [
             'pagination' => $pagination,
