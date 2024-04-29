@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercise index{% endblock %}
+
+{% block body %}
+    <h1>Exercise index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Chapter</th>
+                <th>Keyword</th>
+                <th>Difficulty</th>
+                <th>Duration</th>
+                <th>OriginName</th>
+                <th>OriginInformation</th>
+                <th>ProposedByType</th>
+                <th>ProposedByFirstName</th>
+                <th>ProposedByLastName</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exercise in exercises %}
+            <tr>
+                <td>{{ exercise.id }}</td>
+                <td>{{ exercise.name }}</td>
+                <td>{{ exercise.chapter }}</td>
+                <td>{{ exercise.keyword }}</td>
+                <td>{{ exercise.difficulty }}</td>
+                <td>{{ exercise.duration }}</td>
+                <td>{{ exercise.originName }}</td>
+                <td>{{ exercise.originInformation }}</td>
+                <td>{{ exercise.proposedByType }}</td>
+                <td>{{ exercise.proposedByFirstName }}</td>
+                <td>{{ exercise.proposedByLastName }}</td>
+                <td>
+                    <a href="{{ path('app_exercise_show', {'id': exercise.id}) }}">show</a>
+                    <a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exercise_new') }}">Create new</a>
+{% endblock %}

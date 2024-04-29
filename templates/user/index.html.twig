@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block body %}
+    <div>
+        <h3 class="fw-bold fs-2" style="color:#1B3168 ; margin-left: 5%; margin-top: 5%;">Administration</h3>
+    </div>
+    <div class="m-4" style="font-size: 20px;">
+        {{ include('navbarAdmin.html.twig') }}  
+        <div class="bg-white rounded-lg p-8">
+            <h1 class="font-bold text-3xl pb-6">Gestion des contributeurs</h1>
+            <p>Rechercher un contributeur par nom, prénom ou email :</p>
+            {# Formulaire de recherche #}
+            <form method="get" action="{{ path('app_user_index') }}">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control rounded-lg me-5" name="q">
+                    <button class="btn ms-5 p-3 me-5 rounded" style="background-color: #F6F6F6;" type="submit">Rechercher</button>
+                    <a href="{{ path('app_user_new') }}" class="btn rounded ms-3 p-3 me-5 text-light" style="background-color : #52B788">Ajouter +</a>
+                </div>
+            </form>
+            <div class="relative overflow-x-auto rounded mt-5" > 
+                <table class="table tableViewContri w-full text-sm text-left rtl:text-right text-gray-500  dark:text-gray-400 border border-gray-300" style="font-size: 20px;">
+                    <thead class="bg-gray-100 ">
+                        <tr class="bg-secondary!important">
+                            <th scope="col" class="px-6 py-3">Nom</th>
+                            <th scope="col" class="px-6 py-3">Prénom</th>
+                            <th scope="col" class="px-6 py-3">Roles</th>
+                            <th scope="col" class="px-6 py-3">Email</th>
+                            <th scope="col" class="px-6 py-3">Actions</th>
+                        </tr>
+                    </thead>
+                    {% for user in pagination %}
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td scope="row" class="px-6 py-4 text-secondary">{{ user.lastName }}</td>
+                            <td scope="row" class="px-6 py-4 text-secondary">{{ user.firstName }}</td>
+                            <td scope="row" class="px-6 py-4 text-secondary">
+                                {% if user.roles is defined and user.roles|json_encode == '["ROLE_TEACHER"]' %}
+                                    Enseignant
+                                {% elseif user.roles is defined and user.roles|json_encode == '["ROLE_STUDENT"]' %}
+                                    Étudiant
+                                {% elseif user.roles is defined and user.roles|json_encode == '["ADMIN"]' %}
+                                    Admin
+                                {% endif %}
+                            </td>
+                            <td scope="row" class="px-6 py-4 text-secondary">{{ user.email }}</td>
+                            <td scope="row" class="px-6 py-4 text-secondary d-flex align-items-center" colspan="2">
+                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="">Modifier</a>
+                                {{ include('user/_delete_form.html.twig') }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">Aucun contributeur trouvé.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="admin__pagination" style="border-color: #1B3168;">
+                    {{ knp_pagination_render(pagination) }}      
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

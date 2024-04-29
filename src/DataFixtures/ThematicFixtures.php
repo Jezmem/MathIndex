@@ -2,8 +2,8 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Course;
 use App\Entity\Thematic;
+use App\Entity\Course;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -11,25 +11,27 @@ class ThematicFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-            $thematic1 = new Thematic();
-            $thematic1->setName('Thème 1');
-            $thematic1->setCourseId(1);
-            $manager->persist($thematic1);
+        // Récupération d'un cours
+        $course = $manager->getRepository(Course::class)->findOneBy(['name' => 'Mathématiques']);
+        if (!$course) {
+            // Si le cours n'existe pas, vous devrez le créer ou utiliser un autre cours existant
+            $course = new Course();
+            $course->setName('Mathématiques');
+            // Ajoutez d'autres propriétés et configurez-les selon vos besoins
 
-            $thematic2 = new Thematic();
-            $thematic2->setName('Thème 2');
-            $thematic2->setCourseId(2);
-            $manager->persist($thematic2);
+            $manager->persist($course);
+            $manager->flush();
+        }
 
-            $thematic3 = new Thematic();
-            $thematic3->setName('Thème 3');
-            $thematic3->setCourseId(5);
-            $manager->persist($thematic3);
+        // Création des thèmes pour le cours de mathématiques
+        $thematicNames = ['Algèbre', 'Géométrie', 'Calcul différentiel', 'Statistiques'];
+        foreach ($thematicNames as $thematicName) {
+            $thematic = new Thematic();
+            $thematic->setName($thematicName);
+            $thematic->setCourseId($course);
 
-            $thematic4 = new Thematic();
-            $thematic4->setName('Thème 4');
-            $thematic4->setCourseId(2);
-            $manager->persist($thematic4);
+            $manager->persist($thematic);
+        }
 
         $manager->flush();
     }

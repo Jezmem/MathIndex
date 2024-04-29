@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier contributeur{% endblock %}
+
+{% block body %}
+    <div>
+        <h3 class="fw-bold fs-2 pb-5" style="color:#1B3168 ; margin-left: 5%; margin-top: 5%;">Administration</h3>
+    </div>
+    <div style="margin-left: 5%">
+        {{ include('navbarAdmin.html.twig') }} 
+    </div>
+        <div class="bg-white rounded-lg mx-auto" style="width : 90%;">
+            <div class="align-items-center mb-3">
+                <h1 class="fw-bold ms-5 pt-5 pb-5">Modifier un contributeur</h1>
+                {{ form_start(form) }}
+
+                <div class="row">
+                    <div class="col-md-6 ms-5" style="width : 40%;">
+                        <div class="mb-4">
+                            {{ form_label(form.last_name) }}
+                            {{ form_widget(form.last_name, {'attr': {'class': 'form-control rounded'}}) }}
+                        </div>
+
+                        <div class="mb-4">
+                            {{ form_label(form.first_name) }}
+                            {{ form_widget(form.first_name, {'attr': {'class': 'form-control rounded'}}) }}
+                        </div>
+
+                        <div class="mb-4">
+                            {{ form_label(form.email) }}
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control rounded'}}) }}
+                        </div>
+
+                        <div class="mb-4">
+                            {{ form_label(form.password) }}
+                            {{ form_widget(form.password, {'attr': {'class': 'form-control rounded'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 ms-5" style="width : 40%;">
+                        <div class="mb-4">
+                            {{ form_label(form.roles) }}
+                            {{ form_widget(form.roles, {'attr': {'class': 'form-control rounded'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex pb-5 ">
+                    <a href="{{ path('app_user_index') }}" class="btn ms-5" style="background-color: #F6F6F6;"> < Retour à la liste</a>
+                    <button type="submit" class=" btn ms-5" style="background-color: #F6F6F6;">{{ button_label|default('Enregister') }}</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+{% endblock %}
