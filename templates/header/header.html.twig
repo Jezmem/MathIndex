@@ -2,12 +2,21 @@
 
 	<div class="header">
 		{% if app.user %}
-			<div class="header-container">
-				<p>{{ app.user.getFirstName()  }}
-					{{ app.user.getLastName()  }}</p>
+			{% if 'ADMIN' in app.user.roles  %}
+				<div class="header-container">	
+				<a href="/user" class="d-flex">
+					<p style="width: 110px;">{{ app.user.getFirstName() }} {{ app.user.getLastName() }}</p>
+					<img class="user-image" src="../image/user.svg">
+				</a>
+				</div>
+			{% else %}
+				<div class="header-container">
+					<p>{{ app.user.getFirstName()  }}
+						{{ app.user.getLastName()  }}</p>
 
-				<img class="user-image" src="image/user.svg" "">
-			</div>
+					<img class="user-image" src="image/user.svg">
+				</div>
+			{% endif %}
 		{% else %}
 			<div class="header-container">
 				<a class="login-links" href="/login">
