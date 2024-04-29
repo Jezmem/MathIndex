@@ -101,12 +101,12 @@ class Exercise
     }
 
 
-    public function getClassroomId(): ?Classroom
+    public function getClassroom(): ?Classroom
     {
         return $this->classroom;
     }
 
-    public function setClassroomId(Classroom $classroom): static
+    public function setClassroom(Classroom $classroom): static
     {
         $this->classroom = $classroom;
 
@@ -162,12 +162,12 @@ class Exercise
         return $this;
     }
 
-    public function getOriginId(): ?Origin
+    public function getOrigin(): ?Origin
     {
         return $this->origin;
     }
 
-    public function setOriginId(Origin $origin): static
+    public function setOrigin(Origin $origin): static
     {
         $this->origin = $origin;
 
@@ -234,24 +234,24 @@ class Exercise
         return $this;
     }
 
-    public function getExerciseFileId(): ?File
+    public function getExerciseFile(): ?File
     {
         return $this->exerciseFile;
     }
 
-    public function setExerciseFileId(File $exercise_file): static
+    public function setExerciseFile(File $exercise_file): static
     {
         $this->exerciseFile = $exercise_file;
 
         return $this;
   }
 
-    public function getCreatedById(): ?User
+    public function getCreatedBy(): ?User
     {
         return $this->createdBy;
     }
 
-    public function setCreatedById(User $created_by): static
+    public function setCreatedBy(User $created_by): static
     {
         $this->createdBy = $created_by;
 
@@ -275,9 +275,9 @@ class Exercise
         return $this->correctionFile;
     }
 
-    public function setCorrectionFile(File $CorrectionFile): static
+    public function setCorrectionFile(File $correctionFile): static
     {
-        $this->correctionFile = $CorrectionFile;
+        $this->correctionFile = $correctionFile;
 
         return $this;
     }

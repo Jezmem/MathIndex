@@ -21,28 +21,47 @@ class ExerciseRepository extends ServiceEntityRepository
         parent::__construct($registry, Exercise::class);
     }
 
-//    /**
-//     * @return Exercise[] Returns an array of Exercise objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Exercise[] Returns an array of Exercise objects
+     */
+    public function findByExampleField($value): array
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('e.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Exercise
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Exercise
+    //    {
+    //        return $this->createQueryBuilder('e')
+    //            ->andWhere('e.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
+    public function findBySearchCriteria($criteria)
+    {
+        $queryBuilder = $this->createQueryBuilder('e');
+
+
+
+        if (!empty($criteria['thematic'])) {
+            $queryBuilder->andWhere('e.thematic = :thematic')
+                ->setParameter('thematic', $criteria['thematic']);
+        }
+
+        if (!empty($criteria['keyword'])) {
+            $queryBuilder->andWhere('e.name LIKE :keyword')
+                ->setParameter('keyword', '%' . $criteria['keyword'] . '%');
+        }
+
+        $queryBuilder->orderBy('e.name', 'ASC');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

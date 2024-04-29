@@ -28,7 +28,7 @@ class SkillFixtures extends Fixture
         foreach ($skillNames as $skillName) {
             $skill = new Skill();
             $skill->setName($skillName);
-            $skill->setCourseId($course);
+            $skill->setCourseId($this->getReference(CourseFixtures::COURSE_REFERENCE.'Mathématiques'));
 
             $manager->persist($skill);
         }

@@ -8,10 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ExerciseSkillRepository::class)]
 class ExerciseSkill
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: Exercise::class, inversedBy: 'exerciceSkills')]
     #[ORM\JoinColumn(nullable: false)]
@@ -22,10 +18,6 @@ class ExerciseSkill
     #[ORM\JoinColumn(nullable: false)]
     private ?Skill $skill = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getExerciseId(): ?Exercise
     {

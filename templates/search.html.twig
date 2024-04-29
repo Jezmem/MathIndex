@@ -9,181 +9,144 @@
 		<h1 class="search-title">Rechercher un exercice</h1>
 		<div class="search-container">
 			<div class="search-form">
-				<div class="search-select">
-					<h2 class="search-label">Niveau :
-					</h2>
-					<div class="search-input">
-						<select class="form-select" aria-label="Default select example">
-							<option selected>Seconde</option>
-							<option value="1">Première</option>
-							<option value="2">Terminale</option>
-							<option value="3">BTS</option>
-						</select>
+				<form action="{{ path('search') }}" method="post" class="search-form">
+					<div class="search-select">
+						<h2 class="search-label">Niveau :
+						</h2>
+						<div
+							class="search-input">
+							{# l'utilisateur choisis la classe de l'exercice #}
+							<select class="form-select" aria-label="Default select example" name="classroom">
+								{% for classroom in classrooms %}
+									{# value à changer pour définir quel classroom à été selectionner #}
+									<option value="1">{{ classroom.name }}</option>
+								{% endfor %}
+							</select>
+						</div>
 					</div>
-				</div>
 
-				<div class="search-select">
-					<h2 class="search-label">Thématique
-					</h2>
-					<div class="search-input">
-						<select class="form-select" aria-label="Default select example">
-							<option selected>Arythmétique</option>
-							<option value="1">Matrice</option>
-							<option value="2">Théorème de Pythagore</option>
-							<option value="3">Les Suites</option>
-						</select>
+					<div class="search-select">
+						<h2 class="search-label">Thématique
+						</h2>
+						{# l'utilisateur choisis la thématique de l'exercice #}
+						<div class="search-input">
+							<select class="form-select" aria-label="Default select example" name="thematic">
+								{% for thematic in thematics %}
+									{# value à changer pour définir quel thematic à été selectionner #}
+									<option value="1">{{ thematic.name }}</option>
+								{% endfor %}
+							</select>
+						</div>
 					</div>
-				</div>
 
-				<div class="search-select">
-					<h2 class="search-label" style="padding-top: 5%;">Mots clés :
-					</h2>
-					<div class=" search-input input-group mb-3">
-						<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" style="border-radius: 6px; border-color: #E7E7E7">
+					<div class="search-select">
+						<h2 class="search-label" style="padding-top: 5%;">Mots clés :
+						</h2>
+						<div class=" search-input input-group mb-3">
+							<input type="text" name="keywords" class="form-control" aria-label="Username" aria-describedby="basic-addon1" style="border-radius: 6px; border-color: #E7E7E7">
+						</div>
 					</div>
-				</div>
 
-				<button type="submit" class="btn search-button" style="background-color:#F6F6F6; margin-top:3%">Rechercher</button>
-
+					<button type="submit" class="btn search-button" style="background-color:#F6F6F6; margin-top:3%">Rechercher</button>
+				</form>
 			</div>
 
-			<h1 class="search-title" style="font-size:150%; margin: 2% 0">3 exercices trouver</h1>
-			{# à modifier pour dpnner le bon nombre d'exercices trouvés#}
-			<table class="table">
-				<thead>
-					<tr>
-						<th class="search-table-title" scope="col">Nom</th>
-						<th class="search-table-title" scope="col">Difficulté</th>
-						<th class="search-table-title" scope="col">Mot-clés</th>
-						<th class="search-table-title" scope="col">Durée</th>
-						<th class="search-table-title" scope="col">Fichier</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>nom 1</td>
-						<td>Niveau 8</td>
-						<td>
-							<div class="search-keyword-container">
-								<p class="search-keyword">Arythmétique</p>
-								<p class="search-keyword">Matrices</p>
-							</div>
-						</td>
-						<td>4h20</td>
-						<td>
-							<div class="search-file-container">
-								<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Exercice</a>
-								<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Corrigé</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>nom 1</td>
-						<td>Niveau 8</td>
-						<td>
-							<div class="search-keyword-container">
-								<p class="search-keyword">Arythmétique</p>
-								<p class="search-keyword">Matrices</p>
-							</div>
-						</td>
-						<td>4h20</td>
-						<td>
-							<div class="search-file-container">
-								<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Exercice</a>
-								<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Corrigé</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>nom 1</td>
-						<td>Niveau 8</td>
-						<td>
-							<div class="search-keyword-container">
-								<p class="search-keyword">Arythmétique</p>
-								<p class="search-keyword">Matrices</p>
-							</div>
-						</td>
-						<td>4h20</td>
-						<td>
-							<div class="search-file-container">
-								<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Exercice</a>
-								<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Corrigé</a>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>nom 1</td>
-						<td>Niveau 8</td>
-						<td>
-							<div class="search-keyword-container">
-								<p class="search-keyword">Arythmétique</p>
-								<p class="search-keyword">Matrices</p>
-							</div>
-						</td>
-						<td>4h20</td>
-						<td>
-							<div class="search-file-container">
-								<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Exercice</a>
-								<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Corrigé</a>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			{# doit être afficher uniquement lorsque l'utilisateur à saisie les informations de recherches ci-dessus #}
+			{# retourne un tableau des exercice correspondant à la recherche de l'utilisateur #}
+			<p>
+				{{ dump(searchCriteria) }}
+			</p>
+			{% if searchCriteria is null %}
+				<h1 class="search-title" style="font-size:150%; margin: 2% 0">{{ exercises|length }}
+					exercices trouver</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="search-table-title" scope="col">Nom</th>
+							<th class="search-table-title" scope="col">Difficulté</th>
+							<th class="search-table-title" scope="col">Mot-clés</th>
+							<th class="search-table-title" scope="col">Durée</th>
+							<th class="search-table-title" scope="col">Fichier</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							{% for exercise in exercises %}
+
+								<td>{{ exercise.name }}</td>
+								<td>Niveau
+									{{ exercise.difficulty }}</td>
+								<td>
+									<div class="search-keyword-container">
+										<p class="search-keyword">{{ exercise.keyword }}</p>
+									</div>
+								</td>
+								<td>{{ exercise.duration }}</td>
+								<td>
+									<div class="search-file-container">
+										<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Exercice</a>
+										<a class="search-file" href="#"><img src="image/file.svg" style="margin: 0 5%">Corrigé</a>
+									</div>
+								</td>
+							{% endfor %}
+						</tr>
+					</tbody>
+				</table>
+			{% endif %}
 		</div>
 	</div>
-</div>
 
-<style>
-	.search {
-		margin: 3%;
-		background-color: #EFF2F4;
-		font-size: 110%;
-	}
-	.search-container {
-		background-color: #fff;
-		border-radius: 5px;
-		padding: 2% 2% 15%;
-		margin: 1% 0;
-		color: #000000;
-	}
-	.search-form {
-		display: flex;
-		align-items: center;
-	}
-	.search-title {
-		font-size: 200%;
-		font-weight: 500;
-		color: #1B3168;
+	<style>
+		{
+			margin: 3%;
+			background-color: #EFF2F4;
+			font-size: 110%;
+		}
+		.search-container {
+			background-color: #fff;
+			border-radius: 5px;
+			padding: 2% 2% 15%;
+			margin: 1% 0;
+			color: #000000;
+		}
+		.search-form {
+			display: flex;
+			align-items: center;
+		}
+		.search-title {
+			font-size: 200%;
+			font-weight: 500;
+			color: #1B3168;
 
-	}
-	.search-label {
-		margin-bottom: 5%
-	}
-	.search-select {
-		padding-right: 2%;
-	}
-	.search-table-title {
-		background-color: #DBDBDB !important;
-	}
-	.search-keyword {
-		background-color: #DBDBDB;
-		width: fit-content;
-		padding: 2px 10px;
-		border-radius: 50px;
-		margin: 1%;
-	}
-	.search-keyword-container {
-		display: flex;
-		align-items: center;
-	}
-	.search-file-container {
-		display: flex;
-		align-items: center;
-	}
-	.search-file {
-		display: flex;
-		align-items: center;
-		margin: 3%;
-	}
-</style>{% endblock %}
+		}
+		.search-label {
+			margin-bottom: 5%
+		}
+		.search-select {
+			padding-right: 2%;
+		}
+		.search-table-title {
+			background-color: #DBDBDB !important;
+		}
+		.search-keyword {
+			background-color: #DBDBDB;
+			width: fit-content;
+			padding: 2px 10px;
+			border-radius: 50px;
+			margin: 1%;
+		}
+		.search-keyword-container {
+			display: flex;
+			align-items: center;
+		}
+		.search-file-container {
+			display: flex;
+			align-items: center;
+		}
+		.search-file {
+			display: flex;
+			align-items: center;
+			margin: 3%;
+		}
+	</style>
+{% endblock %}
