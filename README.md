@@ -1,6 +1,7 @@
 Lien du cahier des charges : [CDC_-_MathIndex.pdf](https://github.com/Jezmem/MathIndex/files/14719569/CDC_-_MathIndex.pdf)
 # Mathindex
-Projet de gestion des sorties scolaires/voyages/échanges pour la direction du lycée Saint-Vincent à Senlis.
+Projet de fin d'année de bts 2
+Ce projet a pour but de créer une plateforme où les étudiants et les enseignants pourront mettre à disposition des exercices avec leurs corrections, ainsi que les matières et thématiques correspondantes.
 
 Technologies utilisées :
 
